@@ -1,10 +1,13 @@
 import requests
-import os
 import json
 from .models import Rovers, Apod, Cameras
 from datetime import date, timedelta
+import os
+from dotenv import load_dotenv, find_dotenv
 
-NASA_KEY = os.environ.get("NASA_API_KEY")
+load_dotenv(find_dotenv())
+
+NASA_KEY = os.environ["NASA_API_KEY"]
 
 def check_rovers():
     rover_data = Rovers.objects.all()
