@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MarsXPics
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <h4>Astronomy Picture Of The Day</h4>
+        <h5>{{ pics.title }}</h5>
+        <div class="row">
+            <img src="{{ pics.urli }}" alt="Astronomy Picture Of The Day">
+        </div>
+        <hr>
+        <h5>{{ pics.explaination }}</h5>
+        <br>
+        <hr>
+        <h3>Generate Images From One Of These Rovers</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                {% for i in rvers %}
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://mars-photos.herokuapp.com/explore/images/{{ i.rover_name }}_rover.jpg" class="card-img-top" alt="rover image" height="286">
+                            <div class="card-body">
+                                <h5 class="card-title">Rover: {{ i.rover_name }}</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Landing Date: {{ i.rover_landing_date }}</li>
+                                <li class="list-group-item">Launched Date: {{ i.rover_launching_date }}</li>
+                                <li class="list-group-item">Current Status: {{ i.rover_status }}</li>
+                                <li class="list-group-item">Max Sol OR Mars Days: {{ i.max_sol }}</li>
+                                <li class="list-group-item">Max Earth Date: {{ i.max_date }}</li>
+                                <li class="list-group-item">Total Photos Taken: {{ i.total_photos }}</li>
+                            </ul>
+                            <input type="radio" name="rover_id" value="{{ i.id }}">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <button class="btn btn-primary mt-3" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

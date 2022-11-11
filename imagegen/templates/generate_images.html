@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Images You've Generated
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <img src="https://mars-photos.herokuapp.com/explore/images/{{ r.rover_name }}_rover.jpg" class="card-img-top" alt="rover image" height="286">
+                <div class="card-body">
+                    <h5 class="card-title">Rover: {{ r.rover_name }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Landing Date: {{ r.rover_landing_date }}</li>
+                    <li class="list-group-item">Launched Date: {{ r.rover_launching_date }}</li>
+                    <li class="list-group-item">Current Status: {{ r.rover_status }}</li>
+                    <li class="list-group-item">Max Sol OR Mars Days: {{ r.max_sol }}</li>
+                    <li class="list-group-item">Max Earth Date: {{ r.max_date }}</li>
+                    <li class="list-group-item">Total Photos Taken: {{ r.total_photos }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-8">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="gen-by">Generate Image By <sub>Optional</sub></label>
+                    <select name="gen-by" class="form-select" id="cngval" onchange="chang()">
+                        <option value="3" selected>Latest Photos</option>
+                        <option value="1">Earth Date</option>
+                        <option value="2">SOL Mars Day</option>
+                    </select>
+                </div>
+                <div class="mb-3 text-center">
+                    <label class="form-label" for="earth_date">Enter Earth Date</label>
+                    <input class="form-control wx-auto w-auto" id="dat" name="earth_date" type="date" placeholder="2007-09-20" max="{{ r.max_date }}" min="r.rover_landing_date" disabled="true">
+                </div>
+                <div class="mb-3 text-center">
+                    <label class="form-label" for="sold">Enter Sol Mars Day Less Than The Max Sol Or Mars Days</label>
+                    <input class="form-control wx-auto w-auto" id="sol" name="sold" type="number" placeholder="145" disabled="true">
+                </div>
+                <input type="hidden" name="rov" value="{{ r.rover_name }}">
+                <div class="mb-3">
+                    <label for="cmra">Camera <sub>Optional</sub></label>
+                    <Select class="form-select" name="cmra">
+                    {% for c in cams %}
+                        <option value="{{ c.cam }}">{{ c.cam_full }}</option>
+                    {% endfor %}
+                    </Select>
+                </div>
+                <button class="btn btn-primary mt-3" type="submit">Generate</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

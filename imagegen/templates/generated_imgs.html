@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Images That You've Generated
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Rover: {{ r.rover_name }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Landing Date: {{ r.rover_landing_date }}</li>
+                <li class="list-group-item">Launched Date: {{ r.rover_launching_date }}</li>
+                <li class="list-group-item">Current Status: {{ r.rover_status }}</li>
+                <li class="list-group-item">Max Sol OR Mars Days: {{ r.max_sol }}</li>
+                <li class="list-group-item">Max Earth Date: {{ r.max_date }}</li>
+                <li class="list-group-item">Total Photos Taken: {{ r.total_photos }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        {% for pic in pics %}
+            <div class="col-3">
+                <a href="{{ pic.img_src }}">
+                    <div class="card text-bg-dark">
+                        <img src="{{ pic.img_src }}" alt="Image Of Mars">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">{{ pic.camera.full_name }}</h5>
+                            <p class="card-text">Date: {{ pic.earth_date }}</p>
+                            <p class="card-text">Rover: {{ pic.rover.name }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
