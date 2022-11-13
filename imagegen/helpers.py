@@ -101,20 +101,21 @@ def cameras_seed():
     return
 
 
-def generate_image_ap(rovd, rov, gen, cams=""):
+def generate_image_ap(rov, gen, cams=""):
     p = "photos"
-    img_url = f"https://mars-photos.herokuapp.com/api/v1/rovers/{rov}/{p}?{gen}&{cams}"
+    img_url = f"https://mars-photos.herokuapp.com/api/v1/rovers/{rov}/{p}?page=1&{gen}&{cams}"
     if gen == "latest_photos":
-        img_url = f"https://mars-photos.herokuapp.com/api/v1/rovers/{rov}/{gen}?{gen}&{cams}"
+        img_url = f"https://mars-photos.herokuapp.com/api/v1/rovers/{rov}/{gen}?page=1&{cams}"
     try:
-        print(img_url)
         response = requests.get(img_url)
     except requests.RequestException:
         return None
-    if gen == "lates_photos":
+    if gen == "latest_photos":
         pht = response.json()
         photos = pht["latest_photos"]
     else:
         pht = response.json()
         photos = pht["photos"]
+    if len(photos) < 1:
+        return False
     return photos

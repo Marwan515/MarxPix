@@ -45,6 +45,7 @@
                 <div class="mb-3">
                     <label for="cmra">Camera <sub>Optional</sub></label>
                     <Select class="form-select" name="cmra">
+                        <option value="" selected>Any</option>
                     {% for c in cams %}
                         <option value="{{ c.cam }}">{{ c.cam_full }}</option>
                     {% endfor %}

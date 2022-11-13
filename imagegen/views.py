@@ -32,16 +32,19 @@ def generate_images(request):
             camra = f"camera={c}"
         if gen == "1":
             dt = request.POST.get("earth_date")
-            pics = generate_image_ap(rv, rov, f"earth_date={dt}", camra)
+            pics = generate_image_ap(rov, f"earth_date={dt}", camra)
         elif gen == "2":
             dt = request.POST.get("sold")
             print(dt)
             if int(dt) > int(rv.max_sol):
                 messages.warning(request, "Sol Is More Than The Max Sol")
                 return redirect("generate_images")
-            pics = generate_image_ap(rv, rov, f"sol={dt}", camra)
+            pics = generate_image_ap(rov, f"sol={dt}", camra)
         else:
-            pics = generate_image_ap(rv, rov, "latest_photos", camra)
+            pics = generate_image_ap(rov, "latest_photos", camra)
+        if pics == False:
+            messages.info(request, "Did Not Find Images ON This Day")
+            return redirect("generate_images")
         return render(request, "generated_imgs.html", {"pics": pics, "r": rv})
     return render(request, 'generate_images.html', {"r": rv, "cams": cams})
 
