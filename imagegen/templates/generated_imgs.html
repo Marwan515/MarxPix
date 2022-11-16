@@ -20,20 +20,18 @@
             </ul>
         </div>
     </div>
-    <div class="row">
+    <div class="container-fluid">
         {% for pic in pics %}
-            <div class="col-3">
-                <a href="{{ pic.img_src }}">
-                    <div class="card text-bg-dark">
-                        <img src="{{ pic.img_src }}" alt="Image Of Mars">
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">{{ pic.camera.full_name }}</h5>
-                            <p class="card-text">Date: {{ pic.earth_date }}</p>
-                            <p class="card-text">Rover: {{ pic.rover.name }}</p>
-                        </div>
+            <a href="{{ pic.img_src }}">
+                <div class="card text-bg-dark">
+                    <img src="{{ pic.img_src }}" alt="Image Of Mars">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">{{ pic.camera.full_name }}</h5>
+                        <p class="card-text">Date: {{ pic.earth_date }}</p>
+                        <p class="card-text">Rover: {{ pic.rover.name }}</p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}

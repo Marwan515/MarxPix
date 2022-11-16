@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib import messages
 from .helpers import daily_date_check, generate_image_ap
 from .models import Apod, Rovers, Cameras
 from datetime import date
 
 # Create your views here.
-
-
 
 def index(request):
     if request.method == "POST":
@@ -17,7 +14,7 @@ def index(request):
     pics = Apod.objects.filter(apod_date = str(date.today()))
     rvers = Rovers.objects.all()
     return render(request, 'index.html', {"pics": pics[0], "rvers": rvers})
-
+    
 def generate_images(request):
     rv = Rovers.objects.get(id = request.session["rover"])
     cams = Cameras.objects.filter(rover_id = rv.id)
