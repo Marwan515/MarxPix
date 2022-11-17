@@ -18,6 +18,7 @@
     <p>This Page Has A Form With two Drop Down options The Defaults Will Generate The Latest Images With Any Camera</p>
     <p>If You Select The Earth Date Then You'll Only Be Able To Use The Date Input And Vice Versa</p>
     <p>You Can Select Any Camera From The Options And Generate</p>
+    <p>Example: https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/?api_key=DEMO_KEY</p>
 </section>
 <section>
     <h3>The Generated Image Pages</h3>
