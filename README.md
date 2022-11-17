@@ -1,13 +1,13 @@
 <h2> This Project Was For The CS50 Final Project</h2>
 <p>MarXPiX is A Website</p>
-<p>On This Website You'll Be Able To Generate Image From One Of Nasa's Mars Rover's</p>
+<p>On This Website, You'll Be Able To Generate Image From One Of Nasa's Mars Rovers</p>
 <p>This Project Utilizes <a href="https://api.nasa.gov">Nasa's Open API</a></p>
 <hr>
 <section>
     <h3>The Homepage Has 2 Sections</h3>
     <h4>1st Section Utilizes Nasa's open Api Of APOD</h4>
     <p>Example: https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY</p>
-    <p>Which Provides Us With Astronomy Picture Of The Day</p>
+    <p>Which Provides Us With An Astronomy Picture Of The Day</p>
     <p>Each Day It Generates a New Picture</p>
     <h4>2nd Section Utilizes Nasa's Open Api Of Mars Rover Photos</h4>
     <p>First We Use https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity/?api_key=DEMO_KEY To Get Rover Data</p>
@@ -23,7 +23,7 @@
 <section>
     <h3>The Generated Image Pages</h3>
     <p>This Page Shows The Rover Date And Images</p>
-    <p>The Images Has The Name Of The Camera And Date's It Was Captured</p>
+    <p>The Images Has The Name Of The Camera And Date It Was Captured</p>
     <p>Images Are Clickable And It Will Redirect You To The Link That The Api Provided</p>
 </section>
 <hr>
