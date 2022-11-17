@@ -2,7 +2,10 @@
 <p>MarXPiX is A Website</p>
 <p>On This Website, You'll Be Able To Generate Image From One Of Nasa's Mars Rovers</p>
 <p>This Project Utilizes <a href="https://api.nasa.gov">Nasa's Open API</a></p>
+<h3>Visit The Website By Clicking This Link <a href="https://Marwan0.pythonanywhere.com">Marwan0.pythonanywhere.com</a>
 <hr>
+<h3>Watch <a href="https://youtu.be/QKJfbT1N5oE">Video</a>
+<h3>Description Below</h3>
 <section>
     <h3>The Homepage Has 2 Sections</h3>
     <h4>1st Section Utilizes Nasa's open Api Of APOD</h4>
